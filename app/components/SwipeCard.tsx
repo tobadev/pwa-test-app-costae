@@ -40,7 +40,7 @@ const CARDS: CardData[] = [
 ];
 
 function getScreenshotUrl(url: string): string {
-  return `https://image.thum.io/get/width/600/crop/800/${url}`;
+  return `https://image.thum.io/get/width/375/crop/800/viewportWidth/375/${url}`;
 }
 
 function formatCount(n: number): string {
