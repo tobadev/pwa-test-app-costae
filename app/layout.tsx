@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hello World PWA",
-  description: "A simple Hello World Progressive Web App",
+  title: "SwipeFeed PWA",
+  description: "A TikTok-style swipeable feed Progressive Web App",
 };
 
 export default function RootLayout({
@@ -26,8 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#3b82f6" />
+        <meta name="theme-color" content="#000000" />
         <link rel="apple-touch-icon" href="/icon-192x192.png" />
       </head>
       <body
