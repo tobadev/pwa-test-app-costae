@@ -4,88 +4,44 @@ import { useRef, useState, useCallback } from "react";
 
 interface CardData {
   id: number;
-  username: string;
-  caption: string;
-  gradient: string;
-  avatar: string;
+  url: string;
+  title: string;
+  description: string;
   likes: number;
   comments: number;
 }
 
 const CARDS: CardData[] = [
-  {
-    id: 1,
-    username: "alex_creative",
-    caption: "Just vibing with this sunset view! The colors are unreal today.",
-    gradient: "from-pink-500 via-red-500 to-yellow-500",
-    avatar: "AC",
-    likes: 12400,
-    comments: 342,
-  },
-  {
-    id: 2,
-    username: "travel_junkie",
-    caption: "Lost in Tokyo streets. Every corner is a new adventure.",
-    gradient: "from-cyan-500 via-blue-500 to-purple-500",
-    avatar: "TJ",
-    likes: 8700,
-    comments: 198,
-  },
-  {
-    id: 3,
-    username: "foodie_life",
-    caption: "This ramen changed my life. No cap. 10/10 would slurp again.",
-    gradient: "from-orange-400 via-red-500 to-pink-500",
-    avatar: "FL",
-    likes: 23100,
-    comments: 891,
-  },
-  {
-    id: 4,
-    username: "code_wizard",
-    caption: "Shipped a new feature at 3am. Coffee is my co-pilot.",
-    gradient: "from-green-400 via-emerald-500 to-teal-600",
-    avatar: "CW",
-    likes: 5600,
-    comments: 127,
-  },
-  {
-    id: 5,
-    username: "fitness_queen",
-    caption: "New PR today! Consistency beats motivation every single time.",
-    gradient: "from-violet-500 via-purple-500 to-fuchsia-500",
-    avatar: "FQ",
-    likes: 18300,
-    comments: 567,
-  },
-  {
-    id: 6,
-    username: "music_vibes",
-    caption: "Dropped a new beat. Headphones on, world off.",
-    gradient: "from-amber-500 via-orange-600 to-red-600",
-    avatar: "MV",
-    likes: 31200,
-    comments: 1043,
-  },
-  {
-    id: 7,
-    username: "nature_lover",
-    caption: "Found this hidden waterfall on a random hike. Nature wins again.",
-    gradient: "from-teal-400 via-cyan-500 to-blue-600",
-    avatar: "NL",
-    likes: 9800,
-    comments: 234,
-  },
-  {
-    id: 8,
-    username: "art_studio",
-    caption: "Painting emotions you can't put into words. New piece coming soon.",
-    gradient: "from-rose-400 via-pink-500 to-purple-600",
-    avatar: "AS",
-    likes: 15600,
-    comments: 412,
-  },
+  { id: 1, url: "https://github.com", title: "GitHub", description: "Where the world builds software", likes: 45200, comments: 1230 },
+  { id: 2, url: "https://stackoverflow.com", title: "Stack Overflow", description: "Where developers learn & share", likes: 38100, comments: 982 },
+  { id: 3, url: "https://reddit.com", title: "Reddit", description: "The front page of the internet", likes: 52300, comments: 2100 },
+  { id: 4, url: "https://wikipedia.org", title: "Wikipedia", description: "The free encyclopedia", likes: 61000, comments: 1540 },
+  { id: 5, url: "https://dribbble.com", title: "Dribbble", description: "Discover the world's top designers", likes: 19800, comments: 567 },
+  { id: 6, url: "https://codepen.io", title: "CodePen", description: "Social development environment", likes: 14300, comments: 432 },
+  { id: 7, url: "https://medium.com", title: "Medium", description: "Where good ideas find you", likes: 27600, comments: 891 },
+  { id: 8, url: "https://spotify.com", title: "Spotify", description: "Music for everyone", likes: 67400, comments: 3200 },
+  { id: 9, url: "https://twitch.tv", title: "Twitch", description: "Live streaming platform", likes: 41200, comments: 1870 },
+  { id: 10, url: "https://figma.com", title: "Figma", description: "Collaborative design tool", likes: 22100, comments: 645 },
+  { id: 11, url: "https://notion.so", title: "Notion", description: "All-in-one workspace", likes: 31500, comments: 920 },
+  { id: 12, url: "https://vercel.com", title: "Vercel", description: "Develop. Preview. Ship.", likes: 18700, comments: 413 },
+  { id: 13, url: "https://netflix.com", title: "Netflix", description: "Watch anywhere. Cancel anytime.", likes: 72100, comments: 4100 },
+  { id: 14, url: "https://producthunt.com", title: "Product Hunt", description: "The best new products in tech", likes: 15400, comments: 378 },
+  { id: 15, url: "https://discord.com", title: "Discord", description: "Your place to talk and hang out", likes: 48900, comments: 2340 },
+  { id: 16, url: "https://airbnb.com", title: "Airbnb", description: "Belong anywhere", likes: 35600, comments: 1120 },
+  { id: 17, url: "https://behance.net", title: "Behance", description: "Creative portfolios showcase", likes: 12800, comments: 298 },
+  { id: 18, url: "https://unsplash.com", title: "Unsplash", description: "Beautiful free images & pictures", likes: 29300, comments: 756 },
+  { id: 19, url: "https://dev.to", title: "DEV Community", description: "Community of software developers", likes: 16200, comments: 501 },
+  { id: 20, url: "https://linear.app", title: "Linear", description: "The issue tracking tool you'll enjoy using", likes: 11400, comments: 267 },
+  { id: 21, url: "https://stripe.com", title: "Stripe", description: "Payments infrastructure for the internet", likes: 24800, comments: 612 },
+  { id: 22, url: "https://openai.com", title: "OpenAI", description: "Creating safe artificial general intelligence", likes: 58700, comments: 3400 },
+  { id: 23, url: "https://tailwindcss.com", title: "Tailwind CSS", description: "Rapidly build modern websites", likes: 20100, comments: 489 },
+  { id: 24, url: "https://nextjs.org", title: "Next.js", description: "The React framework for the web", likes: 26500, comments: 710 },
+  { id: 25, url: "https://youtube.com", title: "YouTube", description: "Broadcast yourself", likes: 89100, comments: 5600 },
 ];
+
+function getScreenshotUrl(url: string): string {
+  return `https://image.thum.io/get/width/600/crop/800/${url}`;
+}
 
 function formatCount(n: number): string {
   if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, "") + "K";
@@ -121,7 +77,6 @@ export default function SwipeFeed() {
       const dx = clientX - startX.current;
       const dy = clientY - startY.current;
 
-      // Lock direction after 10px of movement
       if (isHorizontal.current === null && (Math.abs(dx) > 10 || Math.abs(dy) > 10)) {
         isHorizontal.current = Math.abs(dx) > Math.abs(dy);
       }
@@ -177,7 +132,6 @@ export default function SwipeFeed() {
     if (isDragging) handleEnd();
   };
 
-  // Calculate card transform
   let cardTransform = "";
   let cardOpacity = 1;
 
@@ -193,23 +147,29 @@ export default function SwipeFeed() {
   }
 
   const isLiked = liked.has(card.id);
-  const swipeHint =
-    dragX > 50 ? "LIKE" : dragX < -50 ? "NOPE" : null;
+  const swipeHint = dragX > 50 ? "LIKE" : dragX < -50 ? "NOPE" : null;
 
   return (
     <div className="swipe-feed-container">
-      {/* Background / next card preview */}
       <div className="card-stack">
-        <div className={`card-bg bg-gradient-to-br ${nextCard.gradient}`}>
+        {/* Background (next) card */}
+        <div className="card-bg">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={getScreenshotUrl(nextCard.url)}
+            alt={nextCard.title}
+            className="card-screenshot"
+            draggable={false}
+          />
+          <div className="card-overlay" />
           <div className="card-content-inner">
-            <div className="card-avatar">{nextCard.avatar}</div>
-            <p className="card-username">@{nextCard.username}</p>
+            <p className="card-site-title">{nextCard.title}</p>
           </div>
         </div>
 
         {/* Active card */}
         <div
-          className={`card-active bg-gradient-to-br ${card.gradient}`}
+          className="card-active"
           style={{
             transform: cardTransform,
             opacity: cardOpacity,
@@ -224,6 +184,16 @@ export default function SwipeFeed() {
           onMouseUp={onMouseUp}
           onMouseLeave={onMouseLeave}
         >
+          {/* Screenshot image */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={getScreenshotUrl(card.url)}
+            alt={card.title}
+            className="card-screenshot"
+            draggable={false}
+          />
+          <div className="card-overlay" />
+
           {/* Swipe hint overlays */}
           {swipeHint === "LIKE" && (
             <div className="swipe-label swipe-like">LIKE</div>
@@ -234,9 +204,9 @@ export default function SwipeFeed() {
 
           {/* Card content */}
           <div className="card-content-inner">
-            <div className="card-avatar-large">{card.avatar}</div>
-            <p className="card-username-large">@{card.username}</p>
-            <p className="card-caption">{card.caption}</p>
+            <p className="card-site-title">{card.title}</p>
+            <p className="card-caption">{card.description}</p>
+            <p className="card-url">{card.url.replace("https://", "")}</p>
           </div>
 
           {/* Side action bar */}
@@ -274,8 +244,28 @@ export default function SwipeFeed() {
               </svg>
               <span className="action-count">Share</span>
             </button>
+
+            <a
+              className="action-btn"
+              href={card.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="action-icon">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+              <span className="action-count">Visit</span>
+            </a>
           </div>
         </div>
+      </div>
+
+      {/* Card counter */}
+      <div className="card-counter">
+        {(currentIndex % CARDS.length) + 1} / {CARDS.length}
       </div>
 
       {/* Bottom nav */}
@@ -308,7 +298,6 @@ export default function SwipeFeed() {
         </button>
       </nav>
 
-      {/* Swipe instruction */}
       <div className="swipe-hint-text">
         Swipe right to like, left to skip
       </div>
